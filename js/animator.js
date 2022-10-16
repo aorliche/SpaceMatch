@@ -47,7 +47,7 @@ export class Animator {
         this.messages = [];
         this.FALLSPEED = 5;
         this.CLEARSPEED = 8;
-        this.INTROCLEARSPEED = 2;
+        this.INTROCLEARSPEED = 1;
         this.CLEARREMOVE = 200;
         this.MSGSTART = dim.h/7;
         this.MSGSPACE = 15;

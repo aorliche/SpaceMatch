@@ -771,7 +771,7 @@ export class Grid {
         if (this.time <= 0) 
             return;
         if (!this.nextIntro) 
-            this.nextIntro = f.randint(40,60);
+            this.nextIntro = f.randint(120,140);
         if (this.time % this.nextIntro != 0) 
             return;
         const topy = this.params.dim.h/2 + 2*this.params.size;
@@ -781,7 +781,7 @@ export class Grid {
         const chosen = new Set();
         do {
             chosen.add(above[f.randint(0,above.length)]);
-        } while (Math.random() < 0.3);
+        } while (Math.random() < 0.1);
         [...chosen].forEach(c => {
             c.poly.empty = false;
             this.setRandomAstron(c.poly);
