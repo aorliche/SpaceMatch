@@ -51,20 +51,21 @@ export class Animator {
         this.CLEARREMOVE = 200;
         this.MSGSTART = dim.h/7;
         this.MSGSPACE = 15;
-        this.nextts = null;
+        this.startts = null;
         this.astron = null;
     }
 
     animate(ts) {
-        if (this.nextts == null) {
-            this.nextts = ts+1000/60;
-        } else if (ts < this.nextts) {
+        if (this.startts == null) {
+            this.startts = ts;
+            this.framecount = 0;
+        }
+        if (this.framecount*1000/60 > ts) {
             if (this.running) 
                 requestAnimationFrame(nts => animate(nts));
             return;
-        } else {
-            this.nextts += 1000/60;
         }
+        this.framecount++;
         const clearspeed = this.grid.state == 'intro' ? this.INTROCLEARSPEED : this.CLEARSPEED;
         this.polys = this.polys.filter(p => {
             // params.center can be set to .to and .to can be set to null in clear()
@@ -151,6 +152,7 @@ export class Animator {
 
     stop() {
         this.running = false;
+        this.startts = null;
     }
     
     repaint() {
