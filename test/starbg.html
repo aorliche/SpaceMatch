@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Parallax Background Test</title>
+<script type='module'>
+    import {Background} from '/js/bg.js';
+    import * as f from '/js/functions.js';
+
+    var $ = q => document.querySelector(q);
+
+    window.addEventListener('load', e => {
+        const canvas = $('canvas');
+        const ctx = canvas.getContext('2d');
+        const bg = new Background({dim: f.dimension(canvas.width, canvas.height)});
+        
+        let nextts = null;
+        function animate(ts) {
+            if (nextts == null) {
+                nextts = ts+1000/60;
+            } else if (ts < nextts) {
+                requestAnimationFrame(nts => animate(nts));
+                return;
+            } else {
+                nextts += 1000/60;
+            }
+            bg.tick();
+            bg.draw(ctx);
+            requestAnimationFrame(nts => animate(nts));
+        }
+
+        requestAnimationFrame(nts => animate(nts));
+    });
+</script>
+</head>
+<body>
+<canvas width=600 height=600></canvas>
+</body>
+</html>
