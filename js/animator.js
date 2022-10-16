@@ -60,9 +60,9 @@ export class Animator {
             this.startts = ts;
             this.framecount = 0;
         }
-        if (this.framecount*1000/60 > ts) {
+        if (this.startts+this.framecount*1000/60 > ts) {
             if (this.running) 
-                requestAnimationFrame(nts => animate(nts));
+                requestAnimationFrame(nts => this.animate(nts));
             return;
         }
         this.framecount++;
