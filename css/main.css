@@ -1,6 +1,14 @@
 body {
     background-color: #111;
+    color: #fff;
+    text-align: center;
 }
 canvas {
     border: 1px solid #333;
+}
+a:link {
+    color: #7cf;
+}
+a:visited {
+    color: #f7f;
 }

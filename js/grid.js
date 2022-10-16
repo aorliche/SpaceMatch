@@ -350,8 +350,10 @@ export class Grid {
             this.pause.click();
             return;
         }
-        if (this.state == 'lost' && this.boxes.lost.button.contains(p)) {
-            this.boxes.lost.button.click();
+        if (this.state == 'lost') {
+            if (this.boxes.lost.button.contains(p)) {
+                this.boxes.lost.button.click();
+            }
             return;
         }
         if (this.paused)
@@ -672,7 +674,7 @@ export class Grid {
     }
 
     reset() {
-        unlocked = 8;
+        unlocked = 6;
         this.state = 'intro';
         this.weather = new Weather(180, 1, 'single').add(Infinity, 2, 'point').add(Infinity, 10, 'dump');
         this.makePolys();
