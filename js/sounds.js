@@ -1,5 +1,5 @@
 
-// Cannot be called Audio because it interferes with the HTML Element Audio
+// Cannot be called Audio because it clobbers the HTML Element Audio
 export class Sounds {
 	constructor() {
 		this.ctx = new AudioContext();

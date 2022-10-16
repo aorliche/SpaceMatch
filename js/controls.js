@@ -1,5 +1,5 @@
 
-import * as f from '/js/functions.js';
+import * as f from './functions.js';
 
 class Control {
     constructor(params) {

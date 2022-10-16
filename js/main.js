@@ -1,41 +1,41 @@
-import * as f from '/js/functions.js';
-import {Animator} from '/js/animator.js';
-import {Grid} from '/js/grid.js';
-import {Sounds} from '/js/sounds.js';
+import * as f from './functions.js';
+import {Animator} from './animator.js';
+import {Grid} from './grid.js';
+import {Sounds} from './sounds.js';
 
 var $ = q => document.querySelector(q);
 var $$ = q => [...document.squerySelectorAll(q)];
 
 var grid, audio;
 var images = [
-    '/images/blast.png', 
-    '/images/lost.png', 
-    '/images/spacematch.png',
-    '/images/astrons/atom.png',
-    '/images/astrons/galaxy.png',
-    '/images/astrons/moon.png',
-    '/images/astrons/pinkmoon.png',
-    '/images/astrons/planet.png',
-    '/images/astrons/reddwarf.png',
-    '/images/astrons/star.png',
-    '/images/astrons/sun.png',
-    '/images/characters/moon_big.png',
-    '/images/characters/pinkmoon_big.png',
-    '/images/characters/planet_big.png',
-    '/images/characters/reddwarf_big.png',
-    '/images/characters/star_big.png',
-    '/images/characters/sun_big.png',
+    '../images/blast.png', 
+    '../images/lost.png', 
+    '../images/spacematch.png',
+    '../images/astrons/atom.png',
+    '../images/astrons/galaxy.png',
+    '../images/astrons/moon.png',
+    '../images/astrons/pinkmoon.png',
+    '../images/astrons/planet.png',
+    '../images/astrons/reddwarf.png',
+    '../images/astrons/star.png',
+    '../images/astrons/sun.png',
+    '../images/characters/moon_big.png',
+    '../images/characters/pinkmoon_big.png',
+    '../images/characters/planet_big.png',
+    '../images/characters/reddwarf_big.png',
+    '../images/characters/star_big.png',
+    '../images/characters/sun_big.png',
 ];
 var sounds = [
-    '/sounds/clear.mp3', 
-    '/sounds/swap.mp3', 
-    '/sounds/plus.mp3', 
-    '/sounds/blast.mp3', 
-    '/sounds/klaxon.mp3', 
-    '/sounds/lost.mp3', 
-    '/sounds/whoosh.flac'
+    '../sounds/clear.mp3', 
+    '../sounds/swap.mp3', 
+    '../sounds/plus.mp3', 
+    '../sounds/blast.mp3', 
+    '../sounds/klaxon.mp3', 
+    '../sounds/lost.mp3', 
+    '../sounds/whoosh.flac'
 ];
-var music = ['/sounds/space-loop.wav'];
+var music = ['../sounds/space-loop.wav'];
 var assets = {};
 var nloaded = 0;
 

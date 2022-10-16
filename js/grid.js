@@ -1,7 +1,7 @@
 
-import * as f from '/js/functions.js';
-import * as C from '/js/controls.js';
-import {Hex, Tri, Square} from '/js/polys.js';
+import * as f from './functions.js';
+import * as C from './controls.js';
+import {Hex, Tri, Square} from './polys.js';
 
 const types = ['moon', 'pinkmoon', 'planet', 'reddwarf', 'star', 'sun', 'atom', 'galaxy'];
 const colors = ['#1a1a39', '#3e151e', '#3a1b35', '#0a2e25', '#333200', '#01263f', '#373d47', '#3a211e'];

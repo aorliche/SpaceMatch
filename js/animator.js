@@ -1,6 +1,6 @@
 
-import * as f from '/js/functions.js';
-import {Background} from '/js/bg.js';
+import * as f from './functions.js';
+import {Background} from './bg.js';
 
 class AstronTaunt {
     constructor(grid, image, duration) {

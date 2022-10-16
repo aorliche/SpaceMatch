@@ -1,5 +1,5 @@
 
-import * as f from '/js/functions.js';
+import * as f from './functions.js';
 
 // Parallax stars background
 // https://codepen.io/sarazond/pen/LYGbwj
