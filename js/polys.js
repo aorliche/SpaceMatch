@@ -80,6 +80,9 @@ class Poly {
 
     // Flash poly
     flash() {
+        // Simple fix to double flash bug
+        if (this.params.color == '#fff')
+            return;
         const colSav = this.params.color;
         this.params.color = '#fff';
         window.setTimeout(e => {
