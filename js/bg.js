@@ -17,7 +17,7 @@ export class Background {
     draw(ctx) {
         // Draw space
         const grad = ctx.createLinearGradient(this.dim.w/2, this.dim.h, this.dim.w/2, 0);
-        grad.addColorStop(0, '#3B3745');
+        grad.addColorStop(0, '#1B1725');
         grad.addColorStop(1, '#090A0F');
         ctx.fillStyle = grad;
         ctx.fillRect(0,0,this.dim.w,this.dim.h);
