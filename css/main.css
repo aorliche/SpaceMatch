@@ -2,6 +2,7 @@ body {
     background-color: #111;
     color: #fff;
     text-align: center;
+    font-family: sans-serif;
 }
 canvas {
     border: 1px solid #333;
@@ -11,4 +12,36 @@ a:link {
 }
 a:visited {
     color: #f7f;
+}
+#new-score {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    left: 0px;
+    top: 163px;
+    text-align: center;
+    display: none;
+}
+#new-score div {
+    display: inline-block;
+    width: 500px;
+    padding-bottom: 35px;
+    background-color: rgba(100, 100, 255, 0.9);
+}
+#new-score h2 {
+    font-weight: normal;
+}
+#high-scores table {
+    margin: 0 auto;
+    border-top: 1px solid #aaa;
+    padding-top: 10px;
+}
+#high-scores tr td {
+    width: 140px;
+    max-width: 140px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#high-scores tr td:first-child {
+    padding-right: 10px;
 }

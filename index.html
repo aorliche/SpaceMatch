@@ -7,9 +7,22 @@
 <script type='module' src='./js/main.js'></script>
 </head>
 <body>
-<canvas width=500 height=500></canvas>
-<p>
-    Collaboration with <a href='https://www.youtube.com/user/AdamLore'>Adam Lore</a><br>
-    Background based on <a href='https://codepen.io/sarazond/pen/LYGbwj'>Parallax Pixel Stars</a></p>
+    <div id='new-score'>
+        <div>
+            <h2>Congratulations!<br>You got a high score!</h2>
+            <input id='name' type='text' placeholder='Name'>
+            <button id='submit'>Submit</button>
+        </div>
+    </div>
+    <canvas width=500 height=500></canvas>
+    <p>
+        Collaboration with <a href='https://www.youtube.com/user/AdamLore'>Adam Lore</a><br>
+        Background based on <a href='https://codepen.io/sarazond/pen/LYGbwj'>Parallax Pixel Stars</a>
+    </p>
+    <div id='high-scores'>
+        <h2>High Scores</h2>
+        <table>
+        </table>
+    </div>
 </body>
 </html>

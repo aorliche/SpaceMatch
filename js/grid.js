@@ -2,6 +2,7 @@
 import * as f from './functions.js';
 import * as C from './controls.js';
 import {Hex, Tri, Square} from './polys.js';
+import {Scoreboard} from './scoreboard.js';
 
 const types = ['moon', 'pinkmoon', 'planet', 'reddwarf', 'star', 'sun', 'atom', 'galaxy'];
 const colors = ['#1a1a39', '#3e151e', '#3a1b35', '#0a2e25', '#333200', '#01263f', '#373d47', '#3a211e'];
@@ -242,13 +243,21 @@ export class Grid {
             })
         };
         this.level = new C.TextCounterControl({
-            pos: f.point(this.params.dim.w-90, 63),
+            pos: f.point(25, 63),
             text: 'Level',
             fontSize: 16,
             count: 1,
             ctx: this.params.ctx
         });
+        this.score = new C.TextCounterControl({
+            pos: f.point(this.params.dim.w-90, 63),
+            text: 'Score',
+            fontSize: 16,
+            count: 0,
+            ctx: this.params.ctx
+        });
         this.klaxon = new C.Klaxon(this);
+        this.scoreboard = new Scoreboard(this);
         this.reset();
     }
 
@@ -308,7 +317,7 @@ export class Grid {
             }
             this.blasts.count += bonus;
             grp.forEach(c => {
-                this.clearCenter(c);
+                this.clearCenter(c, false, bonus+1);
             });
             found = true;
         });
@@ -317,7 +326,7 @@ export class Grid {
         }
     }
 
-    clearCenter(c, blast) {
+    clearCenter(c, blast, mult) {
         // Decrement hardness
         if (!blast && c.poly.hard) {
             c.poly.flash();
@@ -331,6 +340,9 @@ export class Grid {
             c.poly.to = null;
         }
         if (c.poly == this.selected) this.selected = null;
+        // Update score
+        if (mult) this.score.count += mult;
+        else this.score.count++;
         this.anim.clear(c.poly);
     }
 
@@ -458,6 +470,7 @@ export class Grid {
         this.survive.draw(ctx);
         this.pause.draw(ctx);
         this.level.draw(ctx);
+        this.score.draw(ctx);
         if (this.state == 'playing') {
             this.klaxon.draw(ctx);
         }
@@ -687,6 +700,8 @@ export class Grid {
         this.hardval = 0;
         this.klaxon.reset();
         this.timers.survive.reset();
+        this.score.count = 0;
+        this.scoreboard.reset();
     }
 
     rotate(theta) {
@@ -828,6 +843,7 @@ export class Grid {
             this.state = 'lost';
             this.audio.stopMusic('space-loop');
             this.audio.play('lost');
+            this.scoreboard.maybeRecordScore(this.score.count);
         }
     }
 
