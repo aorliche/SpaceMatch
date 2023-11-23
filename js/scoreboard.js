@@ -33,7 +33,9 @@ export class Scoreboard {
 
     fetchScores() {
         const promise =  
-        fetch('scores.json')
+        fetch('scores.json', {
+            cache: "no-store"
+        })
         .then(res => res.json())
         .then(scores => {
             this.scores = scores;
