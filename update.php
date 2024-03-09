@@ -1,7 +1,4 @@
 <?php
-if (!strstr($_SERVER['HTTP_REFERER'], 'hunimal.org/SpaceMatch/')) {
-    die($_SERVER['HTTP_REFERER']);
-}
 $new = file_get_contents('php://input');
 $newScore = json_decode($new);
 
