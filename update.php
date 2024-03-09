@@ -1,4 +1,7 @@
 <?php
+if (!strstr($_SERVER['REQUEST_URI'], 'hunimal.org/SpaceMatch/')) {
+    die('Access denied');
+}
 $new = file_get_contents('php://input');
 $newScore = json_decode($new);
 
