@@ -11,18 +11,20 @@ export class Scoreboard {
         // Load and display high scores table
         this.updateTable();
         $('#submit').addEventListener('click', () => {
-            fetch('update.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: $('#name').value,
-                    score: this.myscore
-                })
-            }).then(() => {
-                this.updateTable();
-            });
+            if (this.myscore < 2000) {
+                fetch('update.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: $('#name').value,
+                        score: this.myscore
+                    })
+                }).then(() => {
+                    this.updateTable();
+                });
+            }
             $('#new-score').style.display = 'none';
         });
     }
@@ -38,7 +40,12 @@ export class Scoreboard {
         })
         .then(res => res.json())
         .then(scores => {
-            this.scores = scores;
+            this.scores = scores.filter(item => {
+                if (item && item.name && item.score && typeof item.score === 'number') {
+                    return true;
+                }
+                return false;
+            });
             this.scores.sort((a,b) => {
                 return b.score - a.score; 
             });
