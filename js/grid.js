@@ -163,6 +163,20 @@ export class Grid {
                 this.audio.gain = (this.paused) ? 0 : 1;
             }
         });
+		this.levelUp = new C.ButtonControl({
+			pos: {x: 15, y: 85},
+			dim: {w: 100, h: 30},
+			fontSize: 16,
+			text: 'Level Up',
+			bgColor: '#77f',
+			color: '#fff',
+			ctx: this.params.ctx,
+			cb: () => {
+				this.ramp.ramp(this.level.count);
+				this.level.count++;
+				this.timers.survive.reset();
+			}
+		});
         this.timers = {
             survive: new Timer({
                 t0: 1000,
@@ -243,7 +257,7 @@ export class Grid {
             })
         };
         this.level = new C.TextCounterControl({
-            pos: f.point(25, 63),
+            pos: f.point(35, 63),
             text: 'Level',
             fontSize: 16,
             count: 1,
@@ -362,6 +376,10 @@ export class Grid {
             this.pause.click();
             return;
         }
+		if (this.state == 'playing' && this.levelUp.contains(p)) {
+			this.levelUp.click();
+			return;
+		}
         if (this.state == 'lost') {
             if (this.boxes.lost.button.contains(p)) {
                 this.boxes.lost.button.click();
@@ -470,6 +488,7 @@ export class Grid {
         this.survive.draw(ctx);
         this.pause.draw(ctx);
         this.level.draw(ctx);
+		this.levelUp.draw(ctx);
         this.score.draw(ctx);
         if (this.state == 'playing') {
             this.klaxon.draw(ctx);
@@ -656,6 +675,7 @@ export class Grid {
     mousemove(p) {
         // Buttons in screen coords
         this.pause.hover = this.state == 'playing' && this.pause.contains(p);
+		this.levelUp.hover = this.state == 'playing' && this.levelUp.contains(p);
         this.boxes.lost.button.hover = this.boxes.lost.button.contains(p);
         if (this.paused) {
             this.hover = null;
